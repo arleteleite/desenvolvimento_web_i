@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Lista de Alunos</title></head>
+<body>
+  <h2>Alunos Cadastrados</h2>
+  <ul>
+    {% for aluno in alunos %}
+      <li>{{ aluno[0] }} - {{ aluno[1] }} - {{ aluno[2] }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

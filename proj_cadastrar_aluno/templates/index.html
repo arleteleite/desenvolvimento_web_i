@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head><title>Cadastro de Aluno</title></head>
+<body>
+  <h2>Cadastro</h2>
+  <form action="/alunos" method="post" onsubmit="enviarFormulario(event)">
+    Nome: <input type="text" name="nome"><br>
+    Email: <input type="text" name="email"><br>
+    Matrícula: <input type="text" name="matricula"><br>
+    Senha: <input type="password" name="senha"><br>
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <script>
+    function enviarFormulario(e) {
+      e.preventDefault();
+      const dados = {
+        nome: e.target.nome.value,
+        email: e.target.email.value,
+        matricula: e.target.matricula.value,
+        senha: e.target.senha.value
+      };
+
+      fetch('/alunos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      })
+      .then(res => res.json())
+      .then(json => alert(json.mensagem));
+    }
+  </script>
+</body>
+</html>
